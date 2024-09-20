@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Cifrado Multibyte</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <link rel="stylesheet" href="/Proyecto De Sistemas/css/style.css">
+
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#about">Sobre mí</a></li>
+        <li><a href="#hobbies">Mis hobbies</a></li>
+        <li><a href="#cipher">Cifrado</a></li>
+      </ul>
+    </nav>
+
+    <div id="themeSelector">
+      <button onclick="changeTheme('light')">Light</button>
+      <button onclick="changeTheme('dark')">Dark</button>
+      <button onclick="changeTheme('modern')">Modern</button>
+      <button onclick="changeTheme('churrasco')">Churrasco</button>
+    </div>
+
+    <div id="about" class="container">
+      <h2>Sobre mí</h2>
+      <img
+        id="profileImage"
+        src="img/homepic.jpeg"
+        alt="Profile Image"
+      />
+      <p>Aquí puedes añadir información sobre ti.</p>
+    </div>
+
+    <div id="hobbies" class="container">
+      <h2>Mis hobbies</h2>
+      <ul>
+        <li>Hobby 1</li>
+        <li>Hobby 2</li>
+        <li>Hobby 3</li>
+      </ul>
+    </div>
+
+    <div id="cipher" class="container">
+      <h1>Cifrado Multibyte</h1>
+
+      <div class="container">
+        <h2>Cifrado</h2>
+        <label for="byteSize">Tamaño de bytes para cifrado:</label>
+        <select id="byteSize">
+          <option value="2">2 bytes</option>
+          <option value="4">4 bytes</option>
+          <option value="8">8 bytes</option>
+          <option value="16">16 bytes</option>
+        </select>
+        <textarea
+          id="textToEncrypt"
+          placeholder="Ingrese el texto a cifrar aquí"
+        ></textarea>
+        <button onclick="encrypt()">Cifrar</button>
+        <textarea
+          id="encryptedText"
+          readonly
+          placeholder="Texto cifrado aparecerá aquí"
+        ></textarea>
+        <button onclick="downloadEncrypted('pdf')">
+          Descargar Cifrado (PDF)
+        </button>
+        <button onclick="downloadEncrypted('docx')">
+          Descargar Cifrado (DOCX)
+        </button>
+        <button onclick="downloadAsciiTable()">
+          Descargar Tabla de Cifrado ASCII (PDF)
+        </button>
+        <div id="progressBar"><div id="progressBarFill"></div></div>
+      </div>
+
+      <div class="container">
+        <h2>Descifrado</h2>
+        <textarea
+          id="inputEncrypted"
+          placeholder="Ingrese el texto cifrado"
+        ></textarea>
+        <input type="file" id="encryptedFileInput" accept=".pdf,.docx" />
+        <input type="file" id="asciiTableFileInput" accept=".pdf" />
+        <button onclick="readEncryptedFile()">Cargar Archivo Cifrado</button>
+        <button onclick="readAsciiTableFile()">
+          Cargar Tabla de Cifrado ASCII
+        </button>
+        <button onclick="decrypt()">Descifrar</button>
+        <textarea
+          id="decryptedText"
+          readonly
+          placeholder="Texto descifrado aparecerá aquí"
+        ></textarea>
+        <button onclick="showAsciiTable()">Mostrar Tabla ASCII</button>
+      </div>
+
+      <div class="container">
+        <h2>Tabla ASCII</h2>
+        <table id="asciiTable">
+          <tr>
+            <th>Carácter</th>
+            <th>ASCII</th>
+            <th>Hexadecimal</th>
+            <th>Cifrado</th>
+            <th>Factor Aleatorio</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docx/7.3.0/docx.min.js"></script>    
+    <script src="/Proyecto De Sistemas/src/js/main.js"></script>
+  </body>
+</html>
